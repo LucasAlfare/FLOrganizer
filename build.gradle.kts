@@ -18,6 +18,12 @@ repositories {
 
 dependencies {
     implementation(compose.desktop.currentOs)
+
+    implementation("com.lucasalfare.fllistening:FLListening") {
+        version {
+            branch = "master"
+        }
+    }
 }
 
 tasks.withType<KotlinCompile> {

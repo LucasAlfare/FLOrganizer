@@ -1,3 +1,8 @@
+package com.lucasalfare.florganizer
+
+import com.lucasalfare.fllistener.AppEvent
+import com.lucasalfare.fllistener.EventManageable
+
 class PatientsManager : EventManageable() {
 
   private val patients = mutableListOf<Patient>()
@@ -11,11 +16,11 @@ class PatientsManager : EventManageable() {
 
   override fun onEvent(event: AppEvent, data: Any?, origin: Any?) {
     when (event) {
-      AppEvent.PatientIdUpdate -> {
+      PatientIdUpdate -> {
         tmpId = data as String
       }
 
-      AppEvent.ExamsUpdate -> {
+      ExamsUpdate -> {
         val exam = data as String
         if (!tmpExams.contains(exam)) {
           tmpExams += exam
@@ -24,7 +29,7 @@ class PatientsManager : EventManageable() {
         }
       }
 
-      AppEvent.CreatePatient -> {
+      CreatePatient -> {
         if (tmpId.isNotEmpty() && tmpExams.isNotEmpty()) {
           val nextExams = mutableListOf<String>()
           tmpExams.forEach { nextExams += it }
@@ -35,7 +40,7 @@ class PatientsManager : EventManageable() {
             println(it)
           }
 
-          notifyListeners(AppEvent.PatientsUpdate, patients)
+          notifyListeners(PatientsUpdate, patients)
 
           tmpId = ""
           tmpExams.clear()
