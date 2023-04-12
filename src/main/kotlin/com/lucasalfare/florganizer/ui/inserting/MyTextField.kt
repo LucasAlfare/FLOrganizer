@@ -6,7 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import com.lucasalfare.florganizer.PatientIdUpdate
+import com.lucasalfare.florganizer.OrganizerEvents
 import com.lucasalfare.florganizer.uiManager
 
 @Composable
@@ -16,7 +16,11 @@ fun MyTextField() {
   DisposableEffect(true) {
     val callback = uiManager.addCallback { event, data ->
       when (event) {
-        PatientIdUpdate -> {
+        OrganizerEvents.PatientIdUpdate -> {
+          currentPatientId = ""
+        }
+
+        OrganizerEvents.PatientsUpdate -> {
           currentPatientId = ""
         }
 
@@ -32,7 +36,7 @@ fun MyTextField() {
       Text("ID paciente:")
       TextField(currentPatientId, onValueChange = {
         currentPatientId = it
-        uiManager.notifyListeners(PatientIdUpdate, currentPatientId)
+        uiManager.notifyListeners(OrganizerEvents.PatientIdUpdate, currentPatientId)
       })
     }
   }

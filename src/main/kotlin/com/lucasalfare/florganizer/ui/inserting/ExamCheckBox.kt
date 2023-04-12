@@ -6,8 +6,7 @@ import androidx.compose.material.Checkbox
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import com.lucasalfare.florganizer.ExamsUpdate
-import com.lucasalfare.florganizer.PatientsUpdate
+import com.lucasalfare.florganizer.OrganizerEvents
 import com.lucasalfare.florganizer.uiManager
 
 @Composable
@@ -15,9 +14,9 @@ fun ExamCheckBox(exam: String) {
   var checked by remember { mutableStateOf(false) }
 
   DisposableEffect(true) {
-    val callback = uiManager.addCallback { event, data ->
+    val callback = uiManager.addCallback { event, _ ->
       when (event) {
-        PatientsUpdate -> {
+        OrganizerEvents.PatientsUpdate -> {
           checked = false
         }
 
@@ -32,7 +31,7 @@ fun ExamCheckBox(exam: String) {
     Row(verticalAlignment = Alignment.CenterVertically) {
       Checkbox(checked, onCheckedChange = {
         checked = it
-        uiManager.notifyListeners(ExamsUpdate, exam)
+        uiManager.notifyListeners(OrganizerEvents.ExamsUpdate, exam)
       })
       Text(exam)
     }

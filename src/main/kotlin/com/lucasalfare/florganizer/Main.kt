@@ -20,20 +20,44 @@ val uiManager = UIManager()
 @Composable
 fun App() {
   var inserting by remember { mutableStateOf(true) }
+  var patients = remember { mutableStateListOf<Patient>() }
+
+  DisposableEffect(true) {
+    val callback = uiManager.addCallback { event, data ->
+      when (event) {
+        OrganizerEvents.PatientsUpdate -> {
+          patients.clear()
+          val pat = data as MutableList<Patient>
+          println(pat)
+          patients.addAll(pat)
+        }
+
+        else -> {}
+      }
+    }
+
+    onDispose { uiManager.removeCallback(callback) }
+  }
 
   MaterialTheme {
     Column {
       Box {
         Row {
-          Button(onClick = {
-            inserting = true
-          }) {
+          Button(
+            enabled = !inserting,
+            onClick = {
+              inserting = true
+            }
+          ) {
             Text("Cadastrar")
           }
 
-          Button(onClick = {
-            inserting = false
-          }) {
+          Button(
+            enabled = inserting,
+            onClick = {
+              inserting = false
+            }
+          ) {
             Text("Ver")
           }
         }
@@ -42,7 +66,7 @@ fun App() {
       if (inserting) {
         InsertPatientPane()
       } else {
-        ManageExamsPane()
+        ManageExamsPane(patients)
       }
     }
   }

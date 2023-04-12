@@ -8,7 +8,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.lucasalfare.florganizer.CreatePatient
+import com.lucasalfare.florganizer.OrganizerEvents
 import com.lucasalfare.florganizer.exams
 import com.lucasalfare.florganizer.uiManager
 
@@ -26,7 +26,7 @@ fun InsertPatientPane() {
 
     Box(modifier = Modifier.weight(0.5f)) {
       Button(onClick = {
-        uiManager.notifyListeners(CreatePatient)
+        uiManager.notifyListeners(OrganizerEvents.CreatePatient)
       }) {
         Text("adicionar")
       }
