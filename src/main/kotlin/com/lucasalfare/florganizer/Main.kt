@@ -28,7 +28,6 @@ fun App() {
         OrganizerEvents.PatientsUpdate -> {
           patients.clear()
           val pat = data as MutableList<Patient>
-          println(pat)
           patients.addAll(pat)
         }
 
