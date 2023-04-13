@@ -13,11 +13,8 @@ fun ManageExamsPane(patients: SnapshotStateList<Patient>) {
   LazyColumn {
     patients.forEach { patient ->
       item {
-        Text("ID: ${patient.id}")
-        patient.exams.forEach { exam ->
-          ExamInfo(exam, patient.id)
-          Divider()
-        }
+        PatientInfo(patient)
+        Divider()
       }
     }
   }

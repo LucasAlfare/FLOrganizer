@@ -59,6 +59,12 @@ class PatientsManager : EventManageable() {
           tmpExams.clear()
         }
       }
+
+      OrganizerEvents.RemovePatient -> {
+        val patId = data as String
+        patients.removeIf { it.id == patId }
+        notifyListeners(OrganizerEvents.PatientsUpdate, patients)
+      }
     }
   }
 }
