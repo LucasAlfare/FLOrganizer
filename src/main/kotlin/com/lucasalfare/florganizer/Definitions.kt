@@ -9,7 +9,8 @@ enum class OrganizerEvents(val appEvent: AppEvent) {
   CreatePatient(eventFactory("CreatePatient")),
   RemovePatient(eventFactory("RemovePatient")),
   PatientsUpdate(eventFactory("PatientsUpdate")),
-  ExamResultUpdate(eventFactory("ExamResultUpdate"))
+  ExamResultUpdate(eventFactory("ExamResultUpdate")),
+  SavePatients(eventFactory("SavePatients"))
 }
 
 val exams = mutableListOf(
