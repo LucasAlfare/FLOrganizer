@@ -24,6 +24,7 @@ val uiManager = UIManager()
 @Composable
 fun App() {
   MaterialTheme {
+    // 0=inserting; 1=managing; 2=listing
     var organizerMode by remember { mutableStateOf(0) }
     val patients = remember { mutableStateListOf<Patient>() }
 
