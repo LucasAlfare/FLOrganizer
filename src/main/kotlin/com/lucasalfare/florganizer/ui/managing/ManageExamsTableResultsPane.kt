@@ -9,15 +9,18 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.lucasalfare.florganizer.*
 
 
 @Composable
 fun ManageExamsTableResultsPane(patients: SnapshotStateList<Patient>) {
-  Column(modifier = Modifier.fillMaxSize()) {
+  Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
     ExamsTable(patients, Modifier.weight(3f))
 
     Box(modifier = Modifier.weight(0.5f)) {
@@ -49,7 +52,14 @@ fun ExamColumn(header: String, patients: SnapshotStateList<Patient>) {
       .width(150.dp)
       .border(width = 1.dp, color = Color.Gray)
   ) {
-    Text(header)
+    Box(modifier = Modifier.padding(12.dp).fillMaxWidth()) {
+      Text(
+        text = header,
+        modifier = Modifier.align(Alignment.Center),
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold
+      )
+    }
 
     LazyColumn {
       patients.forEach { patient ->
@@ -70,19 +80,29 @@ fun ExamColumn(header: String, patients: SnapshotStateList<Patient>) {
 fun ExamItem(patient: Patient, relatedExam: Exam) {
   var text by remember { mutableStateOf(relatedExam.result) }
 
-  Row {
+  Row(
+    modifier = Modifier.padding(4.dp),
+    verticalAlignment = Alignment.CenterVertically
+  ) {
+    Box(modifier = Modifier.padding(start = 8.dp, end = 8.dp)) {
+      Text(patient.id)
+    }
 
-    Text(patient.id)
-    TextField(value = text, onValueChange = {
-      text = it
-      uiManager.notifyListeners(
-        OrganizerEvents.ExamResultUpdate,
-        arrayOf(
-          patient.id,
-          relatedExam.name,
-          text
-        )
+    Box(modifier = Modifier.padding(start = 8.dp, end = 8.dp)) {
+      TextField(
+        value = text,
+        onValueChange = {
+          text = it
+          uiManager.notifyListeners(
+            OrganizerEvents.ExamResultUpdate,
+            arrayOf(
+              patient.id,
+              relatedExam.name,
+              text
+            )
+          )
+        }
       )
-    })
+    }
   }
 }
