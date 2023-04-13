@@ -48,26 +48,37 @@ fun ExamsTable(patients: SnapshotStateList<Patient>, modifier: Modifier) {
 }
 
 @Composable
-fun ExamColumn(header: String, patients: SnapshotStateList<Patient>) {
+fun ExamColumn(headerText: String, patients: SnapshotStateList<Patient>) {
   Column(
     modifier = Modifier
       .fillMaxHeight()
       .width(140.dp)
       .border(width = 1.dp, color = Color.Gray)
   ) {
-    Box(modifier = Modifier.padding(12.dp).fillMaxWidth()) {
+    Box(
+      modifier = Modifier
+        .padding(12.dp)
+        .fillMaxWidth()
+        .height(50.dp)
+    ) {
       Text(
-        text = header,
+        text = headerText,
         modifier = Modifier.align(Alignment.Center),
-        fontSize = 18.sp,
+        fontSize = 16.sp,
         fontWeight = FontWeight.Bold
+      )
+
+      Divider(
+        modifier = Modifier.align(Alignment.BottomCenter),
+        color = Color.DarkGray,
+        thickness = 2.dp
       )
     }
 
     LazyColumn {
       patients.forEach { patient ->
         patient.exams.forEach { patientExam ->
-          if (patientExam.name == header) {
+          if (patientExam.name == headerText) {
             item {
               ExamItem(patient, patientExam)
               Divider()

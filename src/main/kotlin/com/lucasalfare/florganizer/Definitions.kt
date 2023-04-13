@@ -15,7 +15,15 @@ enum class OrganizerEvents(val appEvent: AppEvent) {
 }
 
 val exams = mutableListOf(
-  "BHC", "HAG", "HCV", "HIV", "VDR", "GRH"
+  "BHC",
+  "HAG",
+  "HCV",
+  "HIV",
+  "VDR",
+  "BRU",
+  "Widal",
+  "Dengue (IgG/IgM)",
+  "GRH",
 )
 
 data class Exam(val name: String, var result: String = "")
