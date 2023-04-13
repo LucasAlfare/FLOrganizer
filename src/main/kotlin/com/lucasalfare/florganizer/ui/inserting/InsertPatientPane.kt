@@ -28,7 +28,7 @@ fun InsertPatientPane() {
       Button(onClick = {
         uiManager.notifyListeners(OrganizerEvents.CreatePatient)
       }) {
-        Text("adicionar")
+        Text("add")
       }
     }
   }
