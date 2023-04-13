@@ -1,12 +1,14 @@
 package com.lucasalfare.florganizer
 
+import androidx.compose.runtime.mutableStateListOf
 import com.lucasalfare.fllistener.EventManageable
 
 class PatientsManager : EventManageable() {
 
   private var tmpId = ""
   private val tmpExams = mutableListOf<Exam>()
-  private val patients = mutableListOf<Patient>()
+
+  private val patients = mutableStateListOf<Patient>()
 
   override fun onNotInitiated() {
     this.initiated = true
