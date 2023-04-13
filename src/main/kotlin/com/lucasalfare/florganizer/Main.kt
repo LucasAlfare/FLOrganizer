@@ -12,7 +12,8 @@ import androidx.compose.ui.window.application
 import com.lucasalfare.fllistener.UIManager
 import com.lucasalfare.fllistener.setupManagers
 import com.lucasalfare.florganizer.ui.inserting.InsertPatientPane
-import com.lucasalfare.florganizer.ui.managing.ManageExamsPane
+import com.lucasalfare.florganizer.ui.listing.Listing
+import com.lucasalfare.florganizer.ui.managing.ManageExamsTableResultsPane
 
 
 val uiManager = UIManager()
@@ -21,7 +22,7 @@ val uiManager = UIManager()
 @Composable
 fun App() {
   MaterialTheme {
-    var inserting by remember { mutableStateOf(true) }
+    var organizerMode by remember { mutableStateOf(0) }
     val patients = remember { mutableStateListOf<Patient>() }
 
     DisposableEffect(true) {
@@ -43,24 +44,39 @@ fun App() {
     Column {
       Row {
         Button(
-          enabled = !inserting,
-          onClick = { inserting = true }
+          enabled = organizerMode == 1 || organizerMode == 2,
+          onClick = { organizerMode = 0 }
         ) {
           Text("insert")
         }
 
         Button(
-          enabled = inserting,
-          onClick = { inserting = false }
+          enabled = organizerMode == 0 || organizerMode == 2,
+          onClick = { organizerMode = 1 }
         ) {
           Text("manage")
         }
+
+        Button(
+          enabled = organizerMode == 0 || organizerMode == 1,
+          onClick = { organizerMode = 2 }
+        ) {
+          Text("list")
+        }
       }
 
-      if (inserting) {
-        InsertPatientPane()
-      } else {
-        ManageExamsPane(patients)
+      when (organizerMode) {
+        0 -> {
+          InsertPatientPane()
+        }
+
+        1 -> {
+          ManageExamsTableResultsPane(patients)
+        }
+
+        else -> {
+          Listing(patients)
+        }
       }
     }
   }

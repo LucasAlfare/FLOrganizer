@@ -1,6 +1,5 @@
 package com.lucasalfare.florganizer.ui.managing
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,7 +16,7 @@ import com.lucasalfare.florganizer.*
 
 
 @Composable
-fun ManageExamsPane(patients: SnapshotStateList<Patient>) {
+fun ManageExamsTableResultsPane(patients: SnapshotStateList<Patient>) {
   Column(modifier = Modifier.fillMaxSize()) {
     ExamsTable(patients, Modifier.weight(3f))
 
@@ -72,6 +71,7 @@ fun ExamItem(patient: Patient, relatedExam: Exam) {
   var text by remember { mutableStateOf(relatedExam.result) }
 
   Row {
+
     Text(patient.id)
     TextField(value = text, onValueChange = {
       text = it

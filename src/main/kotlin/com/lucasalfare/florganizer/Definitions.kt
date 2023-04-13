@@ -8,6 +8,7 @@ enum class OrganizerEvents(val appEvent: AppEvent) {
   ExamsUpdate(eventFactory("ExamsUpdate")),
   CreatePatient(eventFactory("CreatePatient")),
   RemovePatient(eventFactory("RemovePatient")),
+  RemovePatientExam(eventFactory("RemovePatientExam")),
   PatientsUpdate(eventFactory("PatientsUpdate")),
   ExamResultUpdate(eventFactory("ExamResultUpdate")),
   SavePatients(eventFactory("SavePatients"))

@@ -51,7 +51,17 @@ class PatientsManager : EventManageable() {
         if (tmpId.isNotEmpty() && tmpExams.isNotEmpty()) {
           val nextExams = mutableListOf<Exam>()
           tmpExams.forEach { nextExams += it }
-          patients += Patient(id = tmpId, exams = nextExams)
+
+          val searchPatient = patients.firstOrNull { it.id == tmpId }
+          if (searchPatient != null) {
+            nextExams.forEach {
+              if (!searchPatient.exams.contains(it)) {
+                searchPatient.exams += it
+              }
+            }
+          } else {
+            patients += Patient(id = tmpId, exams = nextExams)
+          }
 
           notifyListeners(OrganizerEvents.PatientsUpdate, patients)
 
@@ -63,6 +73,19 @@ class PatientsManager : EventManageable() {
       OrganizerEvents.RemovePatient -> {
         val patId = data as String
         patients.removeIf { it.id == patId }
+        notifyListeners(OrganizerEvents.PatientsUpdate, patients)
+      }
+
+      OrganizerEvents.RemovePatientExam -> {
+        val props = data as Array<*>
+        val patientId = props[0] as String
+        val examName = props[1] as String
+
+        patients
+          .first { it.id == patientId }
+          .exams
+          .removeIf { it.name == examName }
+
         notifyListeners(OrganizerEvents.PatientsUpdate, patients)
       }
     }
