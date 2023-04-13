@@ -15,7 +15,7 @@ class PatientsManager : EventManageable() {
   }
 
   override fun onInitiated() {
-
+    println("${this.javaClass.name} is properly initiated.")
   }
 
   override fun onEvent(event: Any, data: Any?, origin: Any?) {

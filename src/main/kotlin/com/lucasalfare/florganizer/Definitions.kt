@@ -23,7 +23,7 @@ val exams = mutableListOf(
   "BRU",
   "Widal",
   "Dengue (IgG/IgM)",
-  "GRH",
+  "GRH"
 )
 
 data class Exam(val name: String, var result: String = "")
