@@ -3,6 +3,7 @@ package com.lucasalfare.florganizer.ui.managing
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
@@ -37,9 +38,11 @@ fun ManageExamsTableResultsPane(patients: SnapshotStateList<Patient>) {
 
 @Composable
 fun ExamsTable(patients: SnapshotStateList<Patient>, modifier: Modifier) {
-  Row(modifier = modifier) {
+  LazyRow(modifier = modifier) {
     exams.forEach { exam ->
-      ExamColumn(exam, patients)
+      item {
+        ExamColumn(exam, patients)
+      }
     }
   }
 }
@@ -49,7 +52,7 @@ fun ExamColumn(header: String, patients: SnapshotStateList<Patient>) {
   Column(
     modifier = Modifier
       .fillMaxHeight()
-      .width(150.dp)
+      .width(140.dp)
       .border(width = 1.dp, color = Color.Gray)
   ) {
     Box(modifier = Modifier.padding(12.dp).fillMaxWidth()) {
