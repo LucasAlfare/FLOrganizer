@@ -1,4 +1,4 @@
-package com.lucasalfare.florganizer.io
+package com.lucasalfare.florganizer.core.io
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList

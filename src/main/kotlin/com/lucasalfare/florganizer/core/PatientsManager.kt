@@ -2,7 +2,7 @@ package com.lucasalfare.florganizer.core
 
 import androidx.compose.runtime.mutableStateListOf
 import com.lucasalfare.fllistener.EventManageable
-import com.lucasalfare.florganizer.io.storePatients
+import com.lucasalfare.florganizer.core.io.storePatients
 
 class PatientsManager : EventManageable() {
 
