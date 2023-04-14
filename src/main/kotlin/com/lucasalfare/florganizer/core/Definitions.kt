@@ -1,4 +1,4 @@
-package com.lucasalfare.florganizer
+package com.lucasalfare.florganizer.core
 
 import com.lucasalfare.fllistener.AppEvent
 import com.lucasalfare.fllistener.eventFactory

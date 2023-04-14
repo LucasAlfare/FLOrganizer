@@ -6,8 +6,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.lucasalfare.florganizer.OrganizerEvents
-import com.lucasalfare.florganizer.exams
+import com.lucasalfare.florganizer.core.OrganizerEvents
+import com.lucasalfare.florganizer.core.exams
 import com.lucasalfare.florganizer.uiManager
 
 @Composable

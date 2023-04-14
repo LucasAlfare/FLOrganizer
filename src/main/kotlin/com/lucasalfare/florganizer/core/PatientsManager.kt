@@ -1,4 +1,4 @@
-package com.lucasalfare.florganizer
+package com.lucasalfare.florganizer.core
 
 import androidx.compose.runtime.mutableStateListOf
 import com.lucasalfare.fllistener.EventManageable

@@ -17,6 +17,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lucasalfare.florganizer.*
+import com.lucasalfare.florganizer.core.Exam
+import com.lucasalfare.florganizer.core.OrganizerEvents
+import com.lucasalfare.florganizer.core.Patient
+import com.lucasalfare.florganizer.core.exams
 
 
 @Composable

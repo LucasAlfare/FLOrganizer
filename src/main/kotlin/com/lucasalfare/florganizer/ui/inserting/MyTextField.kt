@@ -9,7 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.lucasalfare.florganizer.OrganizerEvents
+import com.lucasalfare.florganizer.core.OrganizerEvents
 import com.lucasalfare.florganizer.uiManager
 
 @Composable

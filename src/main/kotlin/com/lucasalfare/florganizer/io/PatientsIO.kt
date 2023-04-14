@@ -4,9 +4,9 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.lucasalfare.flbinary.Reader
 import com.lucasalfare.flbinary.Writer
-import com.lucasalfare.florganizer.Exam
-import com.lucasalfare.florganizer.Patient
-import com.lucasalfare.florganizer.getCurrentDateInMilliseconds
+import com.lucasalfare.florganizer.core.Exam
+import com.lucasalfare.florganizer.core.Patient
+import com.lucasalfare.florganizer.core.getCurrentDateInMilliseconds
 import java.io.File
 import java.nio.file.Files
 import java.text.SimpleDateFormat
