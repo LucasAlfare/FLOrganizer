@@ -2,6 +2,7 @@ package com.lucasalfare.florganizer
 
 import androidx.compose.runtime.mutableStateListOf
 import com.lucasalfare.fllistener.EventManageable
+import com.lucasalfare.florganizer.io.storePatients
 
 class PatientsManager : EventManageable() {
 
@@ -87,6 +88,10 @@ class PatientsManager : EventManageable() {
           .removeIf { it.name == examName }
 
         notifyListeners(OrganizerEvents.PatientsUpdate, patients)
+      }
+
+      OrganizerEvents.SavePatients -> {
+        storePatients(patients)
       }
     }
   }

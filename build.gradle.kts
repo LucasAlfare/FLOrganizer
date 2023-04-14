@@ -3,8 +3,8 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.10"
-    id("org.jetbrains.compose") version "1.1.0"
+    kotlin("jvm") version "1.8.0"
+    id("org.jetbrains.compose") version "1.3.0"
 }
 
 group = "com.lucasalfare.florganizer"
@@ -20,6 +20,12 @@ dependencies {
     implementation(compose.desktop.currentOs)
 
     implementation("com.lucasalfare.fllistening:FLListening") {
+        version {
+            branch = "master"
+        }
+    }
+
+    implementation("com.lucasalfare.flbinary:FLBinary") {
         version {
             branch = "master"
         }
