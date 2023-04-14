@@ -16,6 +16,7 @@ import com.lucasalfare.fllistener.setupManagers
 import com.lucasalfare.florganizer.core.OrganizerEvents
 import com.lucasalfare.florganizer.core.Patient
 import com.lucasalfare.florganizer.core.PatientsManager
+import com.lucasalfare.florganizer.core.io.loadPatients
 import com.lucasalfare.florganizer.ui.inserting.InsertPatientPane
 import com.lucasalfare.florganizer.ui.listing.Listing
 import com.lucasalfare.florganizer.ui.managing.ManageExamsTableResultsPane
@@ -94,21 +95,22 @@ fun App() {
 }
 
 fun main() = application {
-  Window(
-    onCloseRequest = ::exitApplication,
-    state = WindowState(
-      placement = WindowPlacement.Maximized,
-      position = WindowPosition(Alignment.Center),
-      size = DpSize(400.dp, 700.dp)
-    )
-  ) {
-    LaunchedEffect(true) {
-      setupManagers(
-        PatientsManager(),
-        uiManager
-      )
-    }
-
-    App()
-  }
+  loadPatients().forEach { println(it) }
+//  Window(
+//    onCloseRequest = ::exitApplication,
+//    state = WindowState(
+//      placement = WindowPlacement.Maximized,
+//      position = WindowPosition(Alignment.Center),
+//      size = DpSize(400.dp, 700.dp)
+//    )
+//  ) {
+//    LaunchedEffect(true) {
+//      setupManagers(
+//        PatientsManager(),
+//        uiManager
+//      )
+//    }
+//
+//    App()
+//  }
 }

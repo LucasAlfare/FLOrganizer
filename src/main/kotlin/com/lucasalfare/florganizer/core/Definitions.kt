@@ -2,6 +2,7 @@ package com.lucasalfare.florganizer.core
 
 import com.lucasalfare.fllistener.AppEvent
 import com.lucasalfare.fllistener.eventFactory
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -39,8 +40,6 @@ data class Patient(
 )
 
 // TODO: fix
-fun getCurrentDateInMilliseconds(): Long {
-  val now = GregorianCalendar()
-  val start = GregorianCalendar(now[Calendar.YEAR], now[Calendar.MONTH], now[Calendar.DAY_OF_MONTH])
-  return now.timeInMillis - start.timeInMillis
+fun getCurrentDateTime(): Date {
+  return Calendar.getInstance().time
 }

@@ -34,7 +34,7 @@ fun ManageExamsTableResultsPane(patients: SnapshotStateList<Patient>) {
           uiManager.notifyListeners(OrganizerEvents.SavePatients)
         }
       ) {
-        Text("save")
+        Text("salvar")
       }
     }
   }

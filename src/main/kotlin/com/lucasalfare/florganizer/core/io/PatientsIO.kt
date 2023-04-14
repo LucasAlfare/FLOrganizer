@@ -6,7 +6,7 @@ import com.lucasalfare.flbinary.Reader
 import com.lucasalfare.flbinary.Writer
 import com.lucasalfare.florganizer.core.Exam
 import com.lucasalfare.florganizer.core.Patient
-import com.lucasalfare.florganizer.core.getCurrentDateInMilliseconds
+import com.lucasalfare.florganizer.core.getCurrentDateTime
 import java.io.File
 import java.nio.file.Files
 import java.text.SimpleDateFormat
@@ -19,7 +19,7 @@ private const val FILE_NAME = "florganizer.data"
 fun storePatients(patients: SnapshotStateList<Patient>) {
   val writer = Writer()
 
-  writer.write4Bytes(getCurrentDateInMilliseconds())
+  writer.write4Bytes(getCurrentDateTime().time)
   writer.write2Bytes(patients.size)
 
   patients.forEach { patient ->
@@ -55,7 +55,7 @@ fun loadPatients(): SnapshotStateList<Patient> {
   }
 
   val routineDate = reader.read4Bytes()
-  println("Reading the routine of date ${SimpleDateFormat("dd/MM/YYYY").format(routineDate)}...")
+  println("Reading the routine of date ${SimpleDateFormat("dd/MM/YYYY").format(getCurrentDateTime().time - routineDate)}...")
 
   val nPatients = reader.read2Bytes()
   var i = 0
