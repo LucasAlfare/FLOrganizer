@@ -38,7 +38,7 @@ fun MyTextField() {
     Row(verticalAlignment = Alignment.CenterVertically) {
       Text("ID paciente:")
       TextField(currentPatientId, onValueChange = {
-        currentPatientId = it
+        currentPatientId = it.trim()
         uiManager.notifyListeners(OrganizerEvents.PatientIdUpdate, currentPatientId)
       })
     }
