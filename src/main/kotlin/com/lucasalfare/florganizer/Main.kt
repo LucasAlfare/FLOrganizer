@@ -95,22 +95,21 @@ fun App() {
 }
 
 fun main() = application {
-  loadPatients().forEach { println(it) }
-//  Window(
-//    onCloseRequest = ::exitApplication,
-//    state = WindowState(
-//      placement = WindowPlacement.Maximized,
-//      position = WindowPosition(Alignment.Center),
-//      size = DpSize(400.dp, 700.dp)
-//    )
-//  ) {
-//    LaunchedEffect(true) {
-//      setupManagers(
-//        PatientsManager(),
-//        uiManager
-//      )
-//    }
-//
-//    App()
-//  }
+  Window(
+    onCloseRequest = ::exitApplication,
+    state = WindowState(
+      placement = WindowPlacement.Maximized,
+      position = WindowPosition(Alignment.Center),
+      size = DpSize(400.dp, 700.dp)
+    )
+  ) {
+    LaunchedEffect(true) {
+      setupManagers(
+        PatientsManager(),
+        uiManager
+      )
+    }
+
+    App()
+  }
 }
